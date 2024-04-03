@@ -1,2 +1,2 @@
 # atlas-monty
-A Monty Interpreter
+This is a MOnty Interpreter Made by me and myself.
