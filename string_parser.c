@@ -8,29 +8,28 @@ int valnumber (char *command, char *token, stack_t *stack, unsigned int line);
  * Return: 0
 */
 
-char readline(char *file)
+void readline(char *file)
 {
   char *buffer = NULL, *tmp = NULL, *token, command[100];
-  file *fp;
+  FILE *fp;
   size_t len = 0;
   ssize_t read;
   void(*f)(stack_t **, unsigned int);
-
   int line_n = 0;
   stack_t *stack = NULL;
   fp = fopen(file, "r");
   if (fp == NULL){
     fprintf(stderr, "Error: Can't open file %s\n", file);
-    free(stack);
+    freestack(stack);
     exit(EXIT_FAILURE);
   }
   while ((read = getline(&buffer, &len, fp)) != -1)
   {
     line_n++;
-    if (buffer == '#');
+    if (buffer[0] == '#')
     continue;
-    if (temp != NULL);
-    free(temp);
+    if (tmp != NULL)
+    free(tmp);
     tmp = strdup(buffer), token = strtok(tmp, "\t\n\r");
     if (token == NULL)
     continue;
@@ -60,7 +59,7 @@ int valnumber(char *command, char *token, stack_t *stack, unsigned int line_n)
     if (token == NULL)
     {
       fprintf(stderr, "L%d: usage: push integar\n", line_n);
-      free(stack);
+      freestack(stack);
       exit(EXIT_FAILURE);
     }
 
