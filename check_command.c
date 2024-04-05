@@ -5,20 +5,42 @@
  * Return: Nada
  * Refer to calc.h and function pointers repo
 */
-void(*check_command(char *command))(stack_t **, unsigned int)
+int check_command(char *content, stack_t **stack, unsigned int counter, FILE *file)
 {
   instruction_t ins_t[] = {
     {"pall", pall},
     {"push", push},
+    {"pop", pop},
+    {"pint", pint},
+    {"nop", _nop},
     {"queue", queue},
-    {"stack", stack}
+    {"stack", astack},
+    {"swap", swap},
+    {NULL, NULL}
   };
-  unsigned int i;
+  unsigned int i = 0;
+  char *op;
 
-  for (i = 0; i < (sizeof(ins_t) / sizeof(instruction_t)); i++)
+  op = strtok(content, " \n\t");
+  if (op && op[0] == '#')
+  return (0);
+  args.arg = strtok(NULL, " \n\t");
+  while (ins_t[i].opcode && op)
   {
-    if (strcmp(command, ins_t[i].opcode) == 0)
-      return (ins_t[i].f);
+    if (strcmp(op, ins_t[i].opcode) == 0)
+    {
+      ins_t[i].f(stack, counter);
+      return (0);
+    }
+    i++;
   }
-  return (NULL);
+  if (op && ins_t[i].opcode == NULL)
+  {
+    fprintf(stderr, "L%d: unknown instructions %s\n", counter, op);
+    fclose(file);
+    free(content);
+    free_stack(*stack);
+    exit(EXIT_FAILURE);
+  }
+  return (1);
 }

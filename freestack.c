@@ -1,18 +1,19 @@
 #include "monty.h"
 
 /**
- * freestack - Frees the stack(or queue)
+ * free_stack - Frees the stack(or queue)
  * @stack: Stack being freed
  * Return: Nothing void
 */
-void freestack(stack_t *stack)
+void free_stack(stack_t *head)
 {
-  stack_t *node = stack;
+	stack_t *aux;
 
-  while (stack != NULL)
-  {
-    node = stack;
-    stack = stack->next;
-    free(node);
-  }
+	aux = head;
+	while (head)
+	{
+		aux = head->next;
+		free(head);
+		head = aux;
+	}
 }

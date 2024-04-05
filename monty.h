@@ -1,24 +1,12 @@
-#ifndef HOLBERTON_FIFO_LIFO
-#define HOLBERTON_FIFO_LIFO
-
-#define PUSH_STACK 0
-#define PUSH_QUEUE 1
-
+#ifndef MONTY_H
+#define MONTY_H
 #include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>
-#include <sys/stat.h>
 #include <sys/types.h>
-#include <string.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include <string.h>
 #include <ctype.h>
-
-typedef struct global
-{
-  int stack_n;
-  int stack_mode;
-}global;
-extern global glob;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -44,21 +32,34 @@ typedef struct stack_s
  * Description: opcode and its function
  * for stack, queue, LIFO, FIFO
 */
+typedef struct args_s
+{
+  char *arg;
+  FILE *file;
+  char *content;
+  int lifi;
+}args_t;
+
+extern args_t args;
 typedef struct instruction_s
 {
   char *opcode;
   void (*f)(stack_t **stack, unsigned int line_number);
 }instruction_t;
 
-
-void pall(stack_t **stack, unsigned int line_number);
-void _push(stack_t **stack, unsigned int line_number);
-void push(stack_t **stack, unsigned int line_number);
-void queue(stack_t **stack, unsigned int line_number);
-void stack(stack_t **stack, unsigned int line_number);
-void freestack(stack_t *stack);
-void(*check_command(char *command))(stack_t **, unsigned int);
-void readline(char *file);
-int valnumber(char *command, char *token, stack_t *stack, unsigned int line_n);
-void lineNum(char *number);
+char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
+ssize_t getstdin(char **lineptr, int file);
+char *clean_line(char *content);
+void pall(stack_t **head, unsigned int counter);
+void push(stack_t **head, unsigned int counter);
+void pint(stack_t **head, unsigned int counter);
+void pop(stack_t **head, unsigned int counter);
+void swap(stack_t **head, unsigned int counter);
+void addqueue(stack_t **head, int n);
+void queue(stack_t **head, unsigned int counter);
+void astack(stack_t **head, unsigned int counter);
+void addnode(stack_t **head, int n);
+void free_stack(stack_t *head);
+int check_command(char *content, stack_t **stack, unsigned int counter, FILE *file);
+void _nop(stack_t **head, unsigned int counter);
 #endif
