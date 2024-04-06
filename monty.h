@@ -53,7 +53,7 @@ char *clean_line(char *content);
 void pall(stack_t **head, unsigned int number);
 void push(stack_t **head, unsigned int number);
 void pint(stack_t **head, unsigned int number);
-int check_command(char *content, stack_t ** head, unsigned int counter, FILE *file);
+int execute(char *content, stack_t ** head, unsigned int counter, FILE *file);
 void free_stack(stack_t *head);
 void pop(stack_t **head, unsigned int counter);
 void swap(stack_t **head, unsigned int counter);
@@ -62,6 +62,5 @@ void addqueue(stack_t **head, int n);
 void queue(stack_t **head, unsigned int counter);
 void astack(stack_t **head, unsigned int counter);
 void addnode(stack_t **head, int n);
-
-void _nop(stack_t **head, unsigned int counter);
+void nop(stack_t **head, unsigned int counter);
 #endif
