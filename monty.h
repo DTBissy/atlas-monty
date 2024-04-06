@@ -57,7 +57,7 @@ int execute(char *content, stack_t ** head, unsigned int counter, FILE *file);
 void free_stack(stack_t *head);
 void pop(stack_t **head, unsigned int counter);
 void swap(stack_t **head, unsigned int counter);
-void pchar(stack_t **head, unsigned int counter);
+void add(stack_t **head, unsigned int counter);
 void addqueue(stack_t **head, int n);
 void queue(stack_t **head, unsigned int counter);
 void astack(stack_t **head, unsigned int counter);
