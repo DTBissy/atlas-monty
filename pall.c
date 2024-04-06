@@ -3,11 +3,12 @@
 void pall(stack_t **head, unsigned int counter)
 {
   stack_t *h;
-  (void) counter;
+  (void)counter;
 
-  h  = *head;
+  h = *head;
   if (h == NULL)
-  return;
+    return;
+  while (h)
   {
     printf("%d\n", h->n);
     h = h->next;

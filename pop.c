@@ -7,8 +7,8 @@ void pop(stack_t **head, unsigned int counter)
 	if (*head == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", counter);
-		fclose(args.file);
-		free(args.content);
+		fclose(sas.file);
+		free(sas.content);
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}

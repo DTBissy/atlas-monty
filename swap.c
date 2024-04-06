@@ -14,8 +14,8 @@ void swap(stack_t **head, unsigned int counter)
   if (len < 2)
   {
     fprintf(stderr, "L%d: Can't swap, stack to short\n", counter);
-    fclose(args.file);
-    free(args.content);
+    fclose(sas.file);
+    free(sas.content);
     free_stack(*head);
     exit(EXIT_FAILURE);
   }

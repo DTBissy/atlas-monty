@@ -2,16 +2,17 @@
 
 void queue(stack_t **head, unsigned int counter)
 {
-  (void) head;
-  (void) counter;
-  args.lifi = 1;
+  (void)head;
+  (void)counter;
+  sas.lifi = 1;
 }
 
 void addqueue(stack_t **head, int n)
 {
-  stack_t *aux = *head;
-  stack_t *new_node = malloc(sizeof(stack_t));
+  stack_t *new_node, *aux;
 
+  aux = *head;
+  new_node = malloc(sizeof(stack_t));
   if (new_node == NULL)
   {
     printf("Error\n");
@@ -21,7 +22,7 @@ void addqueue(stack_t **head, int n)
   if (aux)
   {
     while (aux->next)
-    aux = aux->next;
+      aux = aux->next;
   }
   if (!aux)
   {

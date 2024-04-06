@@ -32,15 +32,15 @@ typedef struct stack_s
  * Description: opcode and its function
  * for stack, queue, LIFO, FIFO
 */
-typedef struct args_s
+typedef struct sas_s
 {
   char *arg;
   FILE *file;
   char *content;
   int lifi;
-}args_t;
+} sas_t;
 
-extern args_t args;
+extern sas_t sas;
 typedef struct instruction_s
 {
   char *opcode;
@@ -50,16 +50,18 @@ typedef struct instruction_s
 char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
 ssize_t getstdin(char **lineptr, int file);
 char *clean_line(char *content);
-void pall(stack_t **head, unsigned int counter);
-void push(stack_t **head, unsigned int counter);
-void pint(stack_t **head, unsigned int counter);
+void pall(stack_t **head, unsigned int number);
+void push(stack_t **head, unsigned int number);
+void pint(stack_t **head, unsigned int number);
+int check_command(char *content, stack_t ** head, unsigned int counter, FILE *file);
+void free_stack(stack_t *head);
 void pop(stack_t **head, unsigned int counter);
 void swap(stack_t **head, unsigned int counter);
+void pchar(stack_t **head, unsigned int counter);
 void addqueue(stack_t **head, int n);
 void queue(stack_t **head, unsigned int counter);
 void astack(stack_t **head, unsigned int counter);
 void addnode(stack_t **head, int n);
-void free_stack(stack_t *head);
-int check_command(char *content, stack_t **stack, unsigned int counter, FILE *file);
+
 void _nop(stack_t **head, unsigned int counter);
 #endif
